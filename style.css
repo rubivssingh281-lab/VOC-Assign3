@@ -81,7 +81,7 @@
       background-blend-mode: overlay;
       background-color: rgba(18, 18, 20, 0.5);
 
-      animation: meshDrift 24s ease-in-out infinite;
+      animation: meshDrift 20s ease-in-out infinite;
     }
 
     @keyframes meshDrift {
