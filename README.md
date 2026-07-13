@@ -8,7 +8,7 @@ A lightweight internship listing page rebuilt to use as little JavaScript as pos
 |---|---|
 | `index.html` | Page markup. All 5 internship cards are written directly as static HTML (no JS templating/rendering). |
 | `style.css` | All visual styling — layout, colors, animations, responsive rules. |
-| `script.js` | The only JavaScript in the project (~45 lines). Handles filtering, search, the accordion sidebar, back-to-top/scroll progress, and card tilt. |
+| `script.js` | The only JavaScript in the project (~90 lines). Handles filtering, search, the accordion sidebar, back-to-top/scroll progress, and card tilt. None of the Animations |
 | `logo.jpg` | Background image used by `style.css`. |
 
 Keep all four files in the same folder — `index.html` references the other three by relative path.
