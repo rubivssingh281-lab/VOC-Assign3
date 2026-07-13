@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Internships | VaultofCodes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="style.css" />
+<style>
+  body{cursor:auto;}
+  .card{
+    opacity:1 !important;
+    transform:none;
+    transition:transform .15s ease-out, box-shadow .25s var(--ease-smooth), border-color .25s !important;
+  }
+  .card:hover{border-color:var(--border-color-hover);}
+  .card.filtered-out{display:none !important;}
+</style>
+</head>
+<body>
+  <div class="bg-mesh" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="app-container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <span class="crumb">Home</span><span class="crumb">/</span><span class="crumb">Internships</span>
+    </nav>
+    <div class="header-row">
+      <div>
+        <h1 class="page-title">
+          <span>Internships</span>
+          <span class="title-gradient" style="font-size:0.7em; font-weight:600;">✨</span>
+          <span class="greeting"><i class="fas fa-hand-peace"></i> Hello, explorer</span>
+        </h1>
+        <div class="count-badge" id="countBadge" style="margin-top:0.9rem;">
+          <span class="count-dot" aria-hidden="true"></span>
+          <strong id="countNum">5</strong>&nbsp;opportunities waiting
+        </div>
+      </div>
+      <div class="search-wrap">
+        <i class="fas fa-magnifying-glass icon"></i>
+        <input type="text" id="searchInput" class="search-input" placeholder="Find your Course…" aria-label="Search internships" autocomplete="off" />
+        <div class="search-underline"></div>
+      </div>
+    </div>
+
+    <div class="main-layout">
+      <aside class="sidebar" id="sidebar">
+        <div id="filterGroups" style="display:flex; flex-direction:column; gap:0.5rem;">
+          <div class="filter-group open" data-filter="provider">
+            <button class="filter-header" type="button">
+              <span class="filter-header-left"><i class="far fa-building"></i>Provider</span>
+              <i class="fas fa-chevron-down chevron"></i>
+            </button>
+            <div class="filter-options">
+              <div>
+                <label><input type="checkbox" checked value="VaultofCodes" /> VaultofCodes</label>
+                <label><input type="checkbox" value="External" /> External Partners</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-group" data-filter="fee">
+            <button class="filter-header" type="button">
+              <span class="filter-header-left"><i class="fas fa-indian-rupee-sign"></i>Fee</span>
+              <i class="fas fa-chevron-down chevron"></i>
+            </button>
+            <div class="filter-options">
+              <div>
+                <label><input type="radio" name="fee" value="all" checked /> All</label>
+                <label><input type="radio" name="fee" value="free" /> Free</label>
+                <label><input type="radio" name="fee" value="paid" /> Paid</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-group" data-filter="mode">
+            <button class="filter-header" type="button">
+              <span class="filter-header-left"><i class="fas fa-briefcase"></i>Mode</span>
+              <i class="fas fa-chevron-down chevron"></i>
+            </button>
+            <div class="filter-options">
+              <div>
+                <label><input type="radio" name="mode" value="all" checked /> All</label>
+                <label><input type="radio" name="mode" value="virtual" /> Virtual</label>
+                <label><input type="radio" name="mode" value="office" /> In-Office</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-group" data-filter="duration">
+            <button class="filter-header" type="button">
+              <span class="filter-header-left"><i class="far fa-clock"></i>Duration</span>
+              <i class="fas fa-chevron-down chevron"></i>
+            </button>
+            <div class="filter-options">
+              <div>
+                <label><input type="checkbox" checked value="1m" /> 1 month</label>
+                <label><input type="checkbox" value="2m" /> 2 months</label>
+                <label><input type="checkbox" value="3m" /> 3+ months</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-group" data-filter="sector">
+            <button class="filter-header" type="button">
+              <span class="filter-header-left"><i class="fas fa-shapes"></i>Sector</span>
+              <i class="fas fa-chevron-down chevron"></i>
+            </button>
+            <div class="filter-options">
+              <div>
+                <label><input type="checkbox" checked value="IT-ITeS" /> IT-ITeS</label>
+                <label><input type="checkbox" checked value="Software" /> Software</label>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn-reset" id="resetBtn" type="button"><i class="fas fa-rotate-right"></i>RESET</button>
+        </div>
+      </aside>
+
+      <div>
+        <div class="internship-grid" id="grid" aria-live="polite">
+
+          <article class="card" data-provider="VaultofCodes" data-fee="free" data-mode="virtual" data-duration="1m,2m" data-sector="IT-ITeS" data-title="web development internship program">
+            <div class="card-banner" style="background-image:url('https://imgs.search.brave.com/8kQjrRzQuWbUL6cbq9lMcSmPG4OL_-yRZavImqmQ_8c/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdDIu/ZGVwb3NpdHBob3Rv/cy5jb20vMzA4NDU5/ODgvNDI2NzYvaS80/NTAvZGVwb3NpdHBo/b3Rvc180MjY3NjUy/MjQtc3RvY2stcGhv/dG8td2ViLWRldmVs/b3BtZW50LWluc2Ny/aXB0aW9uLWxhcHRv/cC1jb2RlLmpwZw');">
+              <span class="badge">Free</span>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Web Development Internship Program</h3>
+              <div class="provider"><i class="fas fa-code"></i> VaultofCodes</div>
+              <span class="sector-tag">IT-ITeS</span>
+              <p class="description">Virtual internship focusing on modern web development practices. Start date: 05/09/2026. No stipend.</p>
+              <div class="card-footer">
+                <div class="duration">Duration: 1 month / 2 months</div>
+                <a href="https://www.vaultofcodes.in/courses/506813" class="view-link" target="_blank" rel="noopener">View Details <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-provider="VaultofCodes" data-fee="free" data-mode="virtual" data-duration="1m,2m" data-sector="IT-ITeS" data-title="ai and prompt engineering program">
+            <div class="card-banner" style="background-image:url('https://imgs.search.brave.com/ghXPouyKIHbXbvjoc-dIj2pMhmvm26X737CPBNcDppU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuY3RmYXNzZXRz/Lm5ldC9hb3l4NzNn/OWgycGcvNFAyR2tj/aURGOHZlS2Z6VzJw/b2tSaS83MmI2NDhl/MzVmNDVmOWZlZDUz/MDdmMTgzZTU2MDhk/Yi9XaHktUHJvbXB0/LUVuZ2luZWVyaW5n/LVdpbGwtQmUtdGhl/LS0xLUFJLVNraWxs/LUJ5LUVuZC1vZi0y/MDI1LUJsb2cuanBn/P3c9Mzg0MCZxPTEw/MA');">
+              <span class="badge">Free</span>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">AI and Prompt Engineering Program</h3>
+              <div class="provider"><i class="fas fa-code"></i> VaultofCodes</div>
+              <span class="sector-tag">IT-ITeS</span>
+              <p class="description">Virtual program designed to build core AI and prompt engineering skills. Start date: 05/06/2026. No stipend.</p>
+              <div class="card-footer">
+                <div class="duration">Duration: 1 month / 2 months</div>
+                <a href="https://www.vaultofcodes.in/courses/506806" class="view-link" target="_blank" rel="noopener">View Details <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-provider="VaultofCodes" data-fee="free" data-mode="virtual" data-duration="1m,2m" data-sector="Software" data-title="python programming internship">
+            <div class="card-banner" style="background-image:url('https://miro.medium.com/1*tKhIpBdPe172fFJeWvLeEw.jpeg');">
+              <span class="badge">Free</span>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Python Programming Internship</h3>
+              <div class="provider"><i class="fas fa-code"></i> VaultofCodes</div>
+              <span class="sector-tag">Software</span>
+              <p class="description">Virtual intensive training in Python programming and problem-solving. Start date: 05/11/2026. No stipend.</p>
+              <div class="card-footer">
+                <div class="duration">Duration: 1 month / 2 months</div>
+                <a href="https://www.vaultofcodes.in/courses/506722" class="view-link" target="_blank" rel="noopener">View Details <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-provider="VaultofCodes" data-fee="free" data-mode="virtual" data-duration="1m,2m" data-sector="Software" data-title="java programming internship program">
+            <div class="card-banner" style="background-image:url('https://thumbs.dreamstime.com/b/java-programming-language-virtual-screen-technology-concept-futuristic-digital-illustration-showing-word-symbolizing-377593913.jpg');">
+              <span class="badge">Free</span>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Java Programming Internship Program</h3>
+              <div class="provider"><i class="fas fa-code"></i> VaultofCodes</div>
+              <span class="sector-tag">Software</span>
+              <p class="description">Virtual backend development experience utilizing the Java ecosystem. Start date: 05/07/2026. No stipend.</p>
+              <div class="card-footer">
+                <div class="duration">Duration: 1 month / 2 months</div>
+                <a href="https://www.vaultofcodes.in/courses/506804" class="view-link" target="_blank" rel="noopener">View Details <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-provider="VaultofCodes" data-fee="free" data-mode="virtual" data-duration="1m,2m" data-sector="Software" data-title="ethical hacking internship program">
+            <div class="card-banner" style="background-image:url('https://imgs.search.brave.com/sl0Nqp3sc1HAlgeJN5cX9iU8rNiSP4YVwL5lKvSclVE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXZlLmNv/bS93cC93cDExMjY2/MDc5LmpwZw');">
+              <span class="badge">Free</span>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Ethical Hacking Internship Program</h3>
+              <div class="provider"><i class="fas fa-code"></i> VaultofCodes</div>
+              <span class="sector-tag">Software</span>
+              <p class="description">Virtual ethical hacking experience utilizing the latest tools and techniques. Start date: 05/10/2026. No stipend.</p>
+              <div class="card-footer">
+                <div class="duration">Duration: 1 month / 2 months</div>
+                <a href="https://www.vaultofcodes.in/courses/797972" class="view-link" target="_blank" rel="noopener">View Details <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+        <div class="empty-state" id="emptyState">
+          <i class="fas fa-satellite-dish"></i>
+          <h1>No matches yet</h1>
+          <h2>Try broadening your filters or searching a different term.</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+  <div class="visually-hidden" id="srAnnounce" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+// Saksham Singh
