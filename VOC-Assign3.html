@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internships | VaultofCodes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon" type="image/png" href="https://imgs.search.brave.com/eIkiBO4JtwXUsqSepBXkepuWijrN60RWG45OAPr_zSU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNzlmOGE1NTY2/ZDliZjg4NDI0NWY5/ZWI4ODA2ZDIxZWY4/M2UxMDRiZmRkNTU1/MmUwMjY1YTNhZDI1/MmFiZDE2NC93d3cu/dmF1bHRvZmNvZGVz/LmluLw" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body">
+  <div class="bg-mesh" aria-hidden="true"></div>
+  <div class="cursor-aurora" id="aurora" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+  <div class="app-container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <span class="crumb">Home</span><span class="crumb">/</span><span class="crumb">Internships</span>
+    </nav>
+    <div class="header-row">
+      <div>
+        <h1 class="page-title">
+          <span>Internships</span>
+          <span class="title-gradient" style="font-size:0.7em; font-weight:600;">✨</span>
+          <span class="greeting"><i class="fas fa-hand-peace"></i> Hello, explorer</span>
+        </h1>
+        <div class="count-badge" id="countBadge" style="margin-top:0.9rem;">
+          <span class="count-dot" aria-hidden="true"></span>
+          <strong id="countNum">5</strong>&nbsp;opportunities waiting
+        </div>
+      </div>
+
+      <div class="search-wrap">
+        <i class="fas fa-magnifying-glass icon"></i>
+        <input type="text" id="searchInput" class="search-input" placeholder="Find your Course…"aria-label="Search internships" autocomplete="off" />
+        <div class="search-underline"></div>
+      </div>
+    </div>
+
+    <div class="main-layout">
+      <aside class="sidebar" id="sidebar">
+        <div id="filterGroups" style="display:flex; flex-direction:column; gap:0.5rem;">
+          <div class="filter-group open" data-filter="provider">
+            <button class="filter-header">
+              <span class="filter-header-left"><i class="far fa-building"></i>Provider</span>
+              <i class="fas fa-chevron-down chevron"></i>
+            </button>
+            <div class="filter-options">
+              <div>
+                <label><input type="checkbox" checked value="VaultofCodes" /> VaultofCodes</label>
+                <label><input type="checkbox" value="External" /> External Partners</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-group" data-filter="fee">
+            <button class="filter-header">
+              <span class="filter-header-left"><i class="fas fa-indian-rupee-sign"></i>Fee</span>
+              <i class="fas fa-chevron-down chevron"></i>
+            </button>
+            <div class="filter-options">
+              <div>
+                <label><input type="radio" name="fee" value="all" checked /> All</label>
+                <label><input type="radio" name="fee" value="free" /> Free</label>
+                <label><input type="radio" name="fee" value="paid" /> Paid</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-group" data-filter="mode">
+            <button class="filter-header">
+              <span class="filter-header-left"><i class="fas fa-briefcase"></i>Mode</span>
+              <i class="fas fa-chevron-down chevron"></i>
+            </button>
+            <div class="filter-options">
+              <div>
+                <label><input type="radio" name="mode" value="all" checked /> All</label>
+                <label><input type="radio" name="mode" value="virtual" /> Virtual</label>
+                <label><input type="radio" name="mode" value="office" /> In-Office</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-group" data-filter="duration">
+            <button class="filter-header">
+              <span class="filter-header-left"><i class="far fa-clock"></i>Duration</span>
+              <i class="fas fa-chevron-down chevron"></i>
+            </button>
+            <div class="filter-options">
+              <div>
+                <label><input type="checkbox" checked value="1m" /> 1 month</label>
+                <label><input type="checkbox" value="2m" /> 2 months</label>
+                <label><input type="checkbox" value="3m" /> 3+ months</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-group" data-filter="sector">
+            <button class="filter-header">
+              <span class="filter-header-left"><i class="fas fa-shapes"></i>Sector</span>
+              <i class="fas fa-chevron-down chevron"></i>
+            </button>
+            <div class="filter-options">
+              <div>
+                <label><input type="checkbox" checked value="IT-ITeS" /> IT-ITeS</label>
+                <label><input type="checkbox" checked value="Software" /> Software</label>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn-reset" id="resetBtn"><i class="fas fa-rotate-right"></i>RESET</button>
+        </div>
+      </aside>
+
+      <div>
+        <div class="internship-grid" id="grid" aria-live="polite">
+        </div>
+        <div class="empty-state" id="emptyState">
+          <i class="fas fa-satellite-dish"></i>
+          <h1>No matches yet</h1>
+          <h2>Try broadening your filters or searching a different term.</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+  <div class="visually-hidden" id="srAnnounce" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+//Saksham Singh
